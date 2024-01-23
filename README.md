@@ -154,6 +154,15 @@ FROM  pg_catalog.pg_locks blocked_locks
 WHERE NOT blocked_locks.granted;
 ```
 
+### Kill a query by PID
+
+NOTE: Be sure to know what & why you are doing it before running this!
+
+```sql
+-- kill a query by pid
+select pg_terminate_backend(1234);
+```
+
 ## Autovacuum
 
 ### Autovacuum taking an access exclusive lock 
@@ -166,7 +175,7 @@ ALTER TABLE mytable SET (vacuum_truncate = off, toast.vacuum_truncate = off);
 ```
 
 ```sql
--- list tables with where options (e.g. autovacuum) are set
+-- list tables where options (e.g. autovacuum) are set
 select relname, reloptions, pg_namespace.nspname
 from pg_class join pg_namespace on pg_namespace.oid = pg_class.relnamespace
 where pg_namespace.nspname = 'public' and reloptions is not null;
