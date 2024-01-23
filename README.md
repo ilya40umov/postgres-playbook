@@ -60,7 +60,7 @@ WHERE pg_stat_all_indexes.schemaname = 'public'
 ORDER BY pg_total_relation_size(relid) DESC, pg_relation_size(indexrelid) DESC;
 ```
 
-### Get the total size of all indecies
+### Get the total size of all indices
 
 ```sql
 -- get total size of indices
